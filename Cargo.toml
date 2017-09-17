@@ -1,0 +1,9 @@
+[package]
+authors = ["Hugo Aguirre <hugoo.aguirre@gmail.com>"]
+name = "viking_dodgeaxe"
+version = "0.1.0"
+[dependencies]
+piston = "*"
+piston2d-graphics = "*"
+piston2d-opengl_graphics = "*"
+pistoncore-glutin_window = "*"
