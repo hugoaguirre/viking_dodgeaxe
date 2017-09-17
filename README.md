@@ -1,2 +1,2 @@
-# viking_dodgeaxe
-A dodgeball with Vikings and of course axes.
+# Vikings: Dodgeaxe
+A dodgeball game with Vikings and of course axes made in Rust.
