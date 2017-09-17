@@ -1,0 +1,18 @@
+language: rust
+
+matrix:
+    - os: linux
+      rust: stable
+    - os: osx
+      rust: stable
+
+cache: cargo
+
+install:
+  # empty
+
+script:
+    - cargo build --verbose
+
+notifications:
+    email: false
