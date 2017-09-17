@@ -1,9 +1,11 @@
 [package]
-authors = ["Hugo Aguirre <hugoo.aguirre@gmail.com>"]
 name = "viking_dodgeaxe"
 version = "0.1.0"
+authors = [
+        "Hugo Aguirre <hugoo.aguirre@gmail.com>",
+        "Juan Jose Gonzalez <juanjosegzl@gmail.com>",
+]
+
 [dependencies]
-piston = "*"
-piston2d-graphics = "*"
-piston2d-opengl_graphics = "*"
-pistoncore-glutin_window = "*"
+piston2d-opengl_graphics = "0.46.0"
+piston_window = "0.69.1"
