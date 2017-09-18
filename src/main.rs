@@ -17,7 +17,7 @@ fn main() {
     let opengl = OpenGL::V3_2;
 
     /* Tell window backend which OpenGL version to use */
-    let settings = WindowSettings::new("Vikings Dodgeaxe", [255, 255])
+    let settings = WindowSettings::new("Vikings Dodgeaxe", [420, 210])
         .opengl(opengl)
         .exit_on_esc(true);
 
