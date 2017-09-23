@@ -7,5 +7,5 @@ authors = [
 ]
 
 [dependencies]
-piston2d-opengl_graphics = "0.46.0"
-piston_window = "0.69.1"
+# Hello
+ggez = {version = "0.3", features = ["cargo-resource-root"]}

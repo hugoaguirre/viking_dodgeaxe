@@ -1,33 +1,75 @@
-/* Force documentation */
-#![deny(missing_docs)]
+extern crate ggez;
 
-//! A vikings dodgeball game with axes a la Rust
+use ggez::conf;
+use ggez::event;
+use ggez::event::MouseButton;
+use ggez::{Context, GameResult};
+use ggez::graphics;
 
-extern crate piston_window;
-extern crate opengl_graphics;
+use assets::Assets;
 
-use piston_window::{OpenGL, PistonWindow, WindowSettings};
-use opengl_graphics::GlGraphics;
+use std::time::Duration;
 
-use arena::Arena;
-mod drawing;
-mod arena;
+mod assets;
 
-fn main() {
-    let opengl = OpenGL::V3_2;
-
-    /* Tell window backend which OpenGL version to use */
-    let settings = WindowSettings::new("Vikings Dodgeaxe", [420, 210])
-        .opengl(opengl)
-        .exit_on_esc(true);
-
-    let mut window: PistonWindow = settings.build()
-        .expect("Could not create main window");
-    let mut gl = GlGraphics::new(opengl);
-
-    let mut arena = Arena::new();
-
-    // main loop
-    arena.run(&mut window, &mut gl);
+struct MainState {
+    /* This main state goes inside the Context, it has to have all
+     * the globals needed to run the game */
+    assets: Assets,
 }
 
+impl MainState {
+
+    fn new(ctx: &mut Context) -> GameResult<MainState> {
+        println!("Created a new MainState struct!");
+        let assets = Assets::new(ctx)?;
+
+        let ms = MainState {
+            assets: assets,
+        };
+
+        Ok((ms))
+    }
+}
+
+impl event::EventHandler for MainState {
+
+    fn draw(&mut self, ctx: &mut Context) -> GameResult<()> {
+        graphics::clear(ctx);
+        Ok(())
+    }
+
+    fn update(&mut self, ctx: &mut Context, dt: Duration) -> GameResult<()> {
+        Ok(())
+    }
+
+    fn key_down_event(&mut self,
+                      keycode: event::Keycode, 
+                      _keymod: event::Mod, 
+                      _repeat: bool) {
+
+        if keycode == event::Keycode::A {
+            println!("A key pressed");
+        }
+    }
+
+    fn mouse_button_down_event(&mut self, _button: MouseButton, _x: i32, _y: i32) {
+        println!("Mouse pressed @ {}, {}", _x, _y);
+    }
+}
+
+pub fn main()
+{
+    let mut c = conf::Conf::new();
+    c.window_title = "Vikings: Dodgeaxe".to_string();
+    c.window_width = 420;
+    c.window_height = 210;
+
+    let ctx = &mut Context::load_from_conf("vikings", "ggez", c).unwrap();
+    let state = &mut MainState::new(ctx).unwrap();
+    if let Err(e) = event::run(ctx, state) {
+        println!("Error encountered: {}", e)
+    } else {
+        println!("Exited cleanly")
+    }
+}
