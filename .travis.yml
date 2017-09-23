@@ -8,12 +8,12 @@ matrix:
 before_install:
     - if [ "${TRAVIS_OS_NAME}" = "linux" ]; then
         sudo apt-get -qq update &&
-        sudo apt-get install -y libgles2-mesa-dev libegl1-mesa-dev libasound2-dev;
+        sudo apt-get install -y libasound2-dev;
         sudo ldconfig;
       fi
 
 install:
-    - if ["{TRAVIS_OS_NAME}" = "linux"]; then
+    - if [ "${TRAVIS_OS_NAME}" = "linux" ]; then
         wget http://libsdl.org/release/SDL2-2.0.5.tar.gz &&
         tar -xzfv SDL2-2.0.5.tar.gz &&
         pushd SDL2-2.0.5 &&
