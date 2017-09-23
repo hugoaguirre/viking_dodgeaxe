@@ -7,5 +7,4 @@ authors = [
 ]
 
 [dependencies]
-# Hello
 ggez = {version = "0.3", features = ["cargo-resource-root"]}
