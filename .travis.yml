@@ -4,15 +4,11 @@ language: rust
 matrix:
     - os: linux
       rust: stable
-    - os: osx
-      rust: stable
-
-cache: cargo
 
 before_install:
     - if [ "${TRAVIS_OS_NAME}" = "linux" ]; then
         sudo apt-get -qq update &&
-        sudo apt-get install -y libasound2-dev libsdl2-dev
+        sudo apt-get install -y libasound2-dev libsdl2-dev;
       fi
 
 install:
@@ -20,7 +16,7 @@ install:
         wget http://libsdl.org/release/SDL2-2.0.5.tar.gz &&
         tar -xzfv SDL2-2.0.5.tar.gz &&
         pushd SDL2-2.0.5 &&
-        ./configure -- prefix/usr &&
+        ./configure --prefix/usr &&
         make && sudo make install &&
         popd;
         fi
