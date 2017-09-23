@@ -15,12 +15,12 @@ before_install:
 install:
     - if [ "${TRAVIS_OS_NAME}" = "linux" ]; then
         wget http://libsdl.org/release/SDL2-2.0.5.tar.gz &&
-        tar -xzfv SDL2-2.0.5.tar.gz &&
+        tar -xzvf SDL2-2.0.5.tar.gz &&
         pushd SDL2-2.0.5 &&
         ./configure --prefix/usr &&
         make && sudo make install &&
         popd;
-        fi
+      fi
 
 script:
     - cargo build --verbose
