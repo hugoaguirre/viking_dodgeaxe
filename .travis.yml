@@ -9,6 +9,7 @@ before_install:
     - if [ "${TRAVIS_OS_NAME}" = "linux" ]; then
         sudo apt-get -qq update &&
         sudo apt-get install -y libgles2-mesa-dev libegl1-mesa-dev libasound2-dev;
+        sudo ldconfig;
       fi
 
 install:
